@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div>
+    <input type="text">
+    <button>Post Questions</button> 
+    <ul></ul> 
+    <div>
+        <input type="button" id = "button2" onlclick = "showAnswer()" value="Show Answer">
+    </div>   
+  </div>
+  <p class = "output2" id= "output2"></p>
+  <script>
+      let questions = [];
+    function postQuestion(){
+        let template = questions.map(questions => `<li>${questions}</li>`).join('\n');
+        document.querySelector('ul').innerHTML = template;
+    }
+    var index = 1
+    postQuestion();
+    let btnAdd = document.querySelector('button');
+    let input = document.querySelector('input');
+    btnAdd.addEventListener('click', () =>{
+    questions.push('Question '+ index + ': ' + input.value);
+    input.value = '';
+    index += 1;
+    postQuestion();        
+    });
+    function showAnswer(){
+        output2.innerHTML = String("We don't have the answer to your question at this time")
+    }
+    button2.addEventListener('click', showAnswer);
+   
+    
+
+  </script>
+</body>
+</html>
